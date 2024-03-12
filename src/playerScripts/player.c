@@ -6,7 +6,6 @@
 #define ACCELERATION 5.0f
 #define DECCELERATION 2.0f
 
-
 void InitPlayer(int screenWidth, int screenHeight, Player *player )
 {
     player->position.x = (float)screenWidth / 2;
@@ -79,3 +78,12 @@ void handlePlayerCollision(int screenWidth, int screenHeight, Player *player)
     if(player->position.y - player->radius <= 0) player->position.y = 0+player->radius;
 }
 Player *player;
+
+void raycastFromPlayer(Player *player)
+{
+    int mapX = (int)player->position.x;
+    int mapY = (int)player->position.y;
+    double sideDistX;
+    double sideDistY;
+
+}

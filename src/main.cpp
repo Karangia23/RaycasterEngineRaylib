@@ -1,6 +1,10 @@
 #include <raylib.h>
 #include <stdio.h>
-#include "src\playerScripts\player.c"
+#include "./playerScripts/player.c"
+#include "raycast.c"
+#include "mapDrawer.c"
+#include <math.h>
+#include <raymath.h>
 
 int main()
 {
@@ -14,10 +18,25 @@ int main()
     float acc = 20.0f;
     float decc = 5.0f;
 
-    Player player = {0, 0,0,0,7.0f};
+    Map map = {
+        {
+            {0,0,0,0,0,0,0,0},
+            {0,1,0,0,0,0,0,0},
+            {0,1,0,0,0,0,0,0},
+            {0,1,1,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0},
+            {0,0,1,0,1,0,0,1},
+            {0,0,0,0,0,0,1,1},
+        },
+        10,
+        5
+    };
+
+    Player player = {0, 0,0,0,7.0f, 0.0f};
 
     InitPlayer(screenWidth, screenHeight, &player);
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
+    InitWindow(screenWidth, screenHeight, "Raycaster!");
     SetTargetFPS(60);
     //--------------------- inits/--------
     //--------------------- mainLoop--------
@@ -27,6 +46,7 @@ int main()
     //---------------------------drawing function 
         BeginDrawing();
         ClearBackground(darkGreen);
+        DrawMap(map);
         DrawCircle(player.position.x, player.position.y, player.radius, WHITE);
         EndDrawing();
     }
