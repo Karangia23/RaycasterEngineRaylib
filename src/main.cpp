@@ -29,11 +29,11 @@ int main()
             {0,0,1,0,1,0,0,1},
             {0,0,0,0,0,0,1,1},
         },
-        10,
-        5
+        64,
+        1,
     };
 
-    Player player = {0, 0,0,0,7.0f, 0.0f};
+    Player player = {0, 0,0,0,7.0f, 0.0f, 90};
 
     InitPlayer(screenWidth, screenHeight, &player);
     InitWindow(screenWidth, screenHeight, "Raycaster!");
@@ -48,6 +48,10 @@ int main()
         ClearBackground(darkGreen);
         DrawMap(map);
         DrawCircle(player.position.x, player.position.y, player.radius, WHITE);
+        DrawLine(player.position.x, player.position.y, player.position.x+(int)(30*cos(player.angle)), player.position.y-(int)(30*sin(player.angle)), GREEN);
+        DrawText(TextFormat("Player angle [%f]:",player.angle), 190, 200, 20, LIGHTGRAY);
+        DrawText(TextFormat("Player speed x [%f]:",player.speed.x), 190, 220, 20, LIGHTGRAY);
+        DrawText(TextFormat("Player speed y [%f]:",player.speed.y), 190, 240, 20, LIGHTGRAY);
         EndDrawing();
     }
     //--------------------- mainLoop--------

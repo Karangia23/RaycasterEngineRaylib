@@ -9,6 +9,7 @@ typedef struct Player {
     Vector2 speed;
     float radius;
     float angle;
+    int fieldOfView;
 } Player;
 
 //Initialize player character in the middle of the screen
